@@ -62,7 +62,7 @@
             <td>{{ koala.ready_to_transfer }}</td>
             <td>
               <p ng-show="!editMode" ng-click="edit = true">{{ koala.notes }}</p>
-              <input ng-show="editMode" ng-model="koala.name" />
+              <input ng-show="editMode" ng-model="koala.notes" />
             </td>
             <td><button ng-show="!koala.ready_to_transfer" ng-click="vm.readyToTransfer(koala)">Ready for Transfer</button></td>
             <td>
