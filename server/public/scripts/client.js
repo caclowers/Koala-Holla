@@ -1,5 +1,7 @@
 const app = angular.module('KoalaApp', []);
 
+
+
 app.controller('KoalaController', ['$http', function($http){
   const self = this;
 
@@ -28,7 +30,7 @@ app.controller('KoalaController', ['$http', function($http){
     .then(function(res){
       console.log(res);
       self.getKoalas();
-    })
+    });
   }
 
   self.deleteKoala = function (id) {
