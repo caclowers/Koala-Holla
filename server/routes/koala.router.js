@@ -31,7 +31,17 @@ router.post('/', (req, res) => {
 });
 
 
-router.put('/:id',);
+router.put('/:id', (req, res) => {
+    console.log('line 35 got to Koala PUT');
+    Koala.findByIdAndUpdate(req.params.id, req.body)
+    .then((data) => {
+        console.log('data returned from Mongo:', data);
+        res.sendStatus(201);
+    }).catch((err) => {
+        console.log('PUT failed. Error:', err);
+        res.sendStatus(500);
+    });
+});
 
 router.delete('/:id', (req, res) => {
     console.log('line 37 here is the req.body from frontend:', req.body);
