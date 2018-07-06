@@ -36,7 +36,7 @@ router.put('/:id',);
 router.delete('/:id', (req, res) => {
     console.log('line 37 here is the req.body from frontend:', req.body);
     Koala.findByIdAndRemove({
-        _id : req.params.id;
+        _id : req.params.id
     }).then((data) => {
         console.log('line 41 data returned from Mongo:', data);
         res.sendStatus(202);
