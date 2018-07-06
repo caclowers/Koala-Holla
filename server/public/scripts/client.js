@@ -20,23 +20,43 @@ app.controller('KoalaController', ['$http', function($http){
   self.getKoalas();
 
   self.addKoala = function(newKoala){
-    console.log(newKoala);
-
+    $http({
+      url: '/koala',
+      method: 'POST',
+      data: newKoala
+    })
+    .then(function(res){
+      console.log(res);
+      self.getKoalas();
+    })
   }
 
   self.deleteKoala = function (id) {
-    console.log('click delete')
-    console.log(id);
+    $http({
+      url: `/koala/${id}`,
+      method: 'DELETE'
+    })
+    .then(function(res){
+      console.log(res);
+      self.getKoalas();
+    })
+    .catch(function(err){
+      console.log(err);
+    })
   }
 
-  self.readyToTransfer = function (id) {
-    console.log(id);
+  self.readyToTransfer = function (koala) {
+    console.log(koala);
+    koala.ready_to_transfer = !koala.ready_to_transfer;
+    console.log(koala);
     $http ({
-      url: `/koala/${id}`,
-      method: 'PUT'
+      url: `/koala/${koala._id}`,
+      method: 'PUT',
+      data: koala
     })
     .then(function(response){
-
+      console.log(response);
+      self.getKoalas();
     })
     .catch(function (error) {
       console.log(error);
