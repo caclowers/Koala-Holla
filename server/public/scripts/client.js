@@ -5,5 +5,11 @@ app.controller('KoalaController', ['$http', function($http){
 
   self.addKoala = function(newKoala){
     console.log(newKoala);
+
+  }
+
+  self.deleteKoala = function () {
+    console.log('click delete')
+    
   }
 }])

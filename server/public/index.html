@@ -30,6 +30,31 @@
       <br>
       <h2>All Koalas</h2>
       <!-- table of koalas -->
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Ready for Transfer?</th>
+            <th>Notes</th>
+            <th>Mark Ready</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td>Age</td>
+            <td>Gender</td>
+            <td>Ready for Transfer</td>
+            <td>Notes</td>
+            <td><button>Ready for Transfer</button></td>
+            <td><button ng-click="vm.deleteKoala()">Delete</button></td>
+          </tr>
+        </tbody>
+        </table>
+
     </div>
   </body>
 </html>
