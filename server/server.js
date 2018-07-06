@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 const koalaRouter = require('./routes/koala.router.js');
 
-const databaseUrl = `mongodb://localhost:27017/koala`;
+const databaseUrl = `mongodb://localhost:27017/koalaholla`;
 mongoose.connect(databaseUrl);
 
 mongoose.connection.on('connected', () => {
