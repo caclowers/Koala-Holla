@@ -29,6 +29,7 @@
       <hr>
       <br>
       <h2>All Koalas</h2>
+      <input type="text" placeholder="search" ng-model="searchText">
       <!-- table of koalas -->
       <table>
         <thead>
@@ -43,7 +44,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="koala in vm.koalas">
+          <tr ng-repeat="koala in vm.koalas | filter:searchText"">
             <td>{{ koala.name }}</td>
             <td>{{ koala.age }}</td>
             <td>{{ koala.gender }}</td>
