@@ -7,8 +7,8 @@
     <script src="vendors/angular.min.js" charset="utf-8"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
   </head>
-  <body>
-    <div class="container">
+  <body ng-app="KoalaApp">
+    <div class="container" ng-controller="KoalaController as vm">
       <header>
         <img src="images/icon.png" class="icon" />
         <h1>Koala Holla</h1>
@@ -19,6 +19,12 @@
       <br>
       <h2>Add Koala</h2>
       <!-- input fields -->
+        <input ng-model="vm.newKoala.name" type="text" placeholder="Name" />
+        <input ng-model="vm.newKoala.age" type="text" placeholder="Age" />
+        <input ng-model="vm.newKoala.gender" type="text" placeholder="Gender" />
+        <input ng-model="vm.newKoala.transfer" type="text" placeholder="Transfer" />
+        <input ng-model="vm.newKoala.notes" type="text" placeholder="Notes" />
+        <button ng-click="vm.addKoala(vm.newKoala)">Add Koala</button>
       <br>
       <hr>
       <br>
