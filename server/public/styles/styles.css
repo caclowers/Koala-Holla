@@ -22,3 +22,7 @@ header {
     max-width: 780px;
     margin: 0 auto;
 }
+
+p {
+    margin: 0;
+}

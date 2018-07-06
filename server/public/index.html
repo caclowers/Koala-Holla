@@ -21,12 +21,14 @@
       <br>
       <h2>Add Koala</h2>
       <!-- input fields -->
-        <input ng-model="vm.newKoala.name" type="text" placeholder="Name"/>
-        <input ng-model="vm.newKoala.age" type="text" placeholder="Age" />
-        <input ng-model="vm.newKoala.gender" type="text" placeholder="Gender" />
-        <input ng-model="vm.newKoala.transfer" type="text" placeholder="Transfer" />
-        <input ng-model="vm.newKoala.notes" type="text" placeholder="Notes" />
-        <button ng-click="vm.addKoala(vm.newKoala)">Add Koala</button>
+        <form>
+          <input ng-model="vm.newKoala.name" type="text" placeholder="Name" ng-required="true" />
+          <input ng-model="vm.newKoala.age" type="text" placeholder="Age" ng-required="true" />
+          <input ng-model="vm.newKoala.gender" type="text" placeholder="Gender" ng-required="true" />
+          <input ng-model="vm.newKoala.transfer" type="text" placeholder="Transfer" ng-required="true" />
+          <input ng-model="vm.newKoala.notes" type="text" placeholder="Notes" ng-required="true" />
+          <button ng-click="vm.addKoala(vm.newKoala)">Add Koala</button>
+        </form>
       <br>
       <hr>
       <br>
@@ -42,17 +44,31 @@
             <th>Ready for Transfer?</th>
             <th>Notes</th>
             <th>Mark Ready</th>
+            <th ng-click="">Edit</th>
             <th>Remove</th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="koala in vm.koalas | filter:searchText">
-            <td>{{ koala.name }}</td>
-            <td>{{ koala.age }}</td>
+          <tr ng-repeat="koala in vm.koalas | filter:searchText" ng-init="editMode = false">
+            <td>
+              <p ng-show="!editMode" ng-click="edit = true">{{ koala.name }}</p>
+              <input ng-show="editMode" ng-model="koala.name" />
+            </td>
+            <td>
+              <p ng-show="!editMode" ng-click="edit = true">{{ koala.age }}</p>
+              <input ng-show="editMode" ng-model="koala.age" />
+            </td>
             <td>{{ koala.gender }}</td>
             <td>{{ koala.ready_to_transfer }}</td>
-            <td>{{ koala.notes }}</td>
+            <td>
+              <p ng-show="!editMode" ng-click="edit = true">{{ koala.notes }}</p>
+              <input ng-show="editMode" ng-model="koala.name" />
+            </td>
             <td><button ng-show="!koala.ready_to_transfer" ng-click="vm.readyToTransfer(koala)">Ready for Transfer</button></td>
+            <td>
+              <button ng-show="!editMode" ng-click="editMode = true">Edit</button>
+              <button ng-show="editMode" ng-click="editMode = false; vm.readyToTransfer(koala)">Save</button>
+            </td>
             <td><button ng-click="vm.deleteKoala(koala._id)">Delete</button></td>
           </tr>
         </tbody>
