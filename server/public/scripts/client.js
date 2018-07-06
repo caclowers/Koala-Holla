@@ -31,6 +31,11 @@ app.controller('KoalaController', ['$http', function ($http) {
         console.log(res);
         self.getKoalas();
         swal('Koala Added!');
+        self.newKoala.name = '';
+        self.newKoala.age = '';
+        self.newKoala.gender = '';
+        self.newKoala.transfer = '';
+        self.newKoala.notes = '';
       })
       .catch(function (err) {
         console.log(err);
