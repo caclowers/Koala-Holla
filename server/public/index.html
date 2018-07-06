@@ -43,12 +43,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Name</td>
-            <td>Age</td>
-            <td>Gender</td>
-            <td>Ready for Transfer</td>
-            <td>Notes</td>
+          <tr ng-repeat="koala in vm.koalas">
+            <td>{{ koala.name }}</td>
+            <td>{{ koala.age }}</td>
+            <td>{{ koala.gender }}</td>
+            <td>{{ koala.ready_to_transfer }}</td>
+            <td>{{ koala.notes }}</td>
             <td><button>Ready for Transfer</button></td>
             <td><button ng-click="vm.deleteKoala()">Delete</button></td>
           </tr>
