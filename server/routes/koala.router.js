@@ -25,8 +25,8 @@ router.post('/', (req, res) => {
         console.log('line 24 POST data from Mongoose:', data);
         res.sendStatus(201);
     }).catch((err) => {
-        console.log('line 27 koala POST failed. Error:', err);
-        res.sendStatus(500);
+        console.log(err.message);
+        res.status(500).send(err.message);
     });
 });
 

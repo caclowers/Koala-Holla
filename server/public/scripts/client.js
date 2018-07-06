@@ -29,6 +29,9 @@ app.controller('KoalaController', ['$http', function($http){
       console.log(res);
       self.getKoalas();
     })
+    .catch(function(err){
+      console.log(err);
+    })
   }
 
   self.deleteKoala = function (id) {
@@ -46,9 +49,9 @@ app.controller('KoalaController', ['$http', function($http){
   }
 
   self.readyToTransfer = function (koala) {
-    console.log(koala);
+
     koala.ready_to_transfer = !koala.ready_to_transfer;
-    console.log(koala);
+    
     $http ({
       url: `/koala/${koala._id}`,
       method: 'PUT',

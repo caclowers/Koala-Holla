@@ -19,7 +19,8 @@
       <br>
       <h2>Add Koala</h2>
       <!-- input fields -->
-        <input ng-model="vm.newKoala.name" type="text" placeholder="Name" />
+        <input ng-model="vm.newKoala.name" type="text" placeholder="Name" required />
+        <div ng-message="required">Name is required</div>
         <input ng-model="vm.newKoala.age" type="text" placeholder="Age" />
         <input ng-model="vm.newKoala.gender" type="text" placeholder="Gender" />
         <input ng-model="vm.newKoala.transfer" type="text" placeholder="Transfer" />
@@ -44,7 +45,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="koala in vm.koalas | filter:searchText"">
+          <tr ng-repeat="koala in vm.koalas | filter:searchText">
             <td>{{ koala.name }}</td>
             <td>{{ koala.age }}</td>
             <td>{{ koala.gender }}</td>
