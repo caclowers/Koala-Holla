@@ -24,7 +24,24 @@ app.controller('KoalaController', ['$http', function($http){
 
   }
 
-  self.deleteKoala = function () {
+  self.deleteKoala = function (id) {
     console.log('click delete')
+    console.log(id);
   }
+
+  self.readyToTransfer = function (id) {
+    console.log(id);
+    $http ({
+      url: `/koala/${id}`,
+      method: 'PUT'
+    })
+    .then(function(response){
+
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+    
+  }
+
 }])

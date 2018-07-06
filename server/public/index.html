@@ -49,8 +49,8 @@
             <td>{{ koala.gender }}</td>
             <td>{{ koala.ready_to_transfer }}</td>
             <td>{{ koala.notes }}</td>
-            <td><button>Ready for Transfer</button></td>
-            <td><button ng-click="vm.deleteKoala()">Delete</button></td>
+            <td><button ng-show="!koala.ready_to_transfer" ng-click="vm.readyToTransfer(koala._id)">Ready for Transfer</button></td>
+            <td><button ng-click="vm.deleteKoala(koala._id)">Delete</button></td>
           </tr>
         </tbody>
         </table>
