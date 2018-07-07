@@ -1,7 +1,5 @@
 const app = angular.module('KoalaApp', []);
 
-
-
 app.controller('KoalaController', ['$http', function ($http) {
   const self = this;
 
@@ -9,15 +7,13 @@ app.controller('KoalaController', ['$http', function ($http) {
     $http({
       url: '/koala',
       method: 'GET'
-    })
-      .then(function (res) {
+    }).then(function (res) {
         self.koalas = res.data;
         console.log(self.koalas);
-      })
-      .catch(function (err) {
+      }).catch(function (err) {
         console.log(err);
-      })
-  }
+      });
+  };
 
   self.getKoalas();
 
@@ -26,8 +22,7 @@ app.controller('KoalaController', ['$http', function ($http) {
       url: '/koala',
       method: 'POST',
       data: newKoala
-    })
-      .then(function (res) {
+    }).then(function (res) {
         console.log(res);
         self.getKoalas();
         swal('Koala Added!');
@@ -36,11 +31,10 @@ app.controller('KoalaController', ['$http', function ($http) {
         self.newKoala.gender = '';
         self.newKoala.transfer = '';
         self.newKoala.notes = '';
-      })
-      .catch(function (err) {
+      }.catch(function (err) {
         console.log(err);
-      })
-  }
+      });
+  };
 
 
   self.deleteKoala = function (id) {
@@ -50,50 +44,43 @@ app.controller('KoalaController', ['$http', function ($http) {
       icon: 'warning',
       buttons: true,
       dangerMode: true,
-    })
-    .then((willDelete) => {
-      if (willDelete) {
-        self.byeKoala(id);
-        swal('Your koala has been sent upstate', {
-          icon: 'success',
-        });
-      } else {
-        swal('Your koala is safe');
-      }
-    })
-  }
+    }).then((willDelete) => {
+        if (willDelete) {
+          self.byeKoala(id);
+          swal('Your koala has been sent upstate', {
+            icon: 'success',
+          });
+        } else {
+          swal('Your koala is safe');
+        };
+      });
+  };
 
-    self.byeKoala = function (id) {
-      $http({
-        url: `/koala/${id}`,
-        method: 'DELETE'
-      })
-        .then(function (res) {
-          console.log(res);
-          self.getKoalas();
-        })
-        .catch(function (err) {
-          console.log(err);
-        })
-    }
+  self.byeKoala = function (id) {
+    $http({
+      url: `/koala/${id}`,
+      method: 'DELETE'
+    }).then(function (res) {
+      console.log(res);
+      self.getKoalas();
+    }).catch(function (err) {
+      console.log(err);
+    });
+  };
 
-    self.readyToTransfer = function (koala) {
+  self.readyToTransfer = function (koala) {
 
-      koala.ready_to_transfer = !koala.ready_to_transfer;
+    koala.ready_to_transfer = !koala.ready_to_transfer;
 
-      $http({
-        url: `/koala/${koala._id}`,
-        method: 'PUT',
-        data: koala
-      })
-        .then(function (response) {
-          console.log(response);
-          self.getKoalas();
-        })
-        .catch(function (error) {
-          console.log(error);
-        })
-
-    }
-
-  }])
+    $http({
+      url: `/koala/${koala._id}`,
+      method: 'PUT',
+      data: koala
+    }).then(function (response) {
+      console.log(response);
+      self.getKoalas();
+    }).catch(function (error) {
+      console.log(error);
+    });
+  };
+}]);
