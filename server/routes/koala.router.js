@@ -1,6 +1,5 @@
 const express = require('express');
 const Koala = require('../models/koala.schema.js');
-
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -13,7 +12,6 @@ router.get('/', (req, res) => {
         res.sendStatus(500);  
     });
 });
-
 
 router.post('/', (req, res) => {
     console.log('line 18 got to /koala POST');

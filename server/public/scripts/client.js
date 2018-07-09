@@ -10,7 +10,7 @@ app.controller('KoalaController', ['$http', function ($http) {
     }).then(function (res) {
         self.koalas = res.data;
         console.log(self.koalas);
-      }).catch(function (err) {
+      }).catch((err) => {
         console.log(err);
       });
   };
@@ -31,7 +31,7 @@ app.controller('KoalaController', ['$http', function ($http) {
         self.newKoala.gender = '';
         self.newKoala.transfer = '';
         self.newKoala.notes = '';
-      }.catch(function (err) {
+      }).catch(function (err) {
         console.log(err);
       });
   };
